@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content = "height = device-height, width = 420, user-scalable = no" /> 
+    <title>ROBO_LIVE</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+	 <script type="text/javascript" src="/scripts/bacon.js"></script>
+        
+        <link rel="shortcut icon" sizes="196x196" href="/img/icon2.png" />
+ 
+   <script type="text/javascript">
+    webiopi().ready(function() {
+	webiopi().setFunction(18,"out");
+	webiopi().setFunction(23,"out");
+	webiopi().setFunction(24,"out");
+	webiopi().setFunction(25,"out");
+        var content,b1,b2,b3,b4;
+        content = $("#content");
+		
+     /*   // create a "SWITCH" labeled button for GPIO 0
+        button = webiopi().createGPIOButton(18, "SWITCH");
+        content.append(button); // append button to content div
+
+        // create a "LED" labeled button for GPIO 18
+        button = webiopi().createGPIOButton(18, "LED");
+        content.append(button); // append button to content div
+*/
+        
+        // you can also create a button which calls a different function for mouse down and up events
+		
+	b1 = webiopi().createButton("b1", "FORWARD", forward, off);
+	b2 = webiopi().createButton("b2", "REVERSE", reverse, off);
+	b3 = webiopi().createButton("b3", "RIGHT", right, off);
+	b4 = webiopi().createButton("b4", "LEFT", left, off);
+	content.append(b1);
+	 content.append(b2);
+        content.append(b3);
+        content.append(b4);
+		
+    });
+
+    function off() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 0);
+    }
+
+    function forward() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 1);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 1);
+		}
+		function reverse() {
+        webiopi().digitalWrite(18, 1);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 1);
+		webiopi().digitalWrite(25, 0);
+		}
+		function right() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 1);
+		webiopi().digitalWrite(24, 1);
+		webiopi().digitalWrite(25, 0);
+		}
+	
+	function left() {
+        webiopi().digitalWrite(18, 1);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 1);
+		}
+	
+
+   
+
+ 
+
+    </script>
+	
+   <style type="text/css">
+ 
+		#b1{
+             position: absolute;
+             margin-top: 1px;
+            margin-bottom: 1px;
+             margin-right: 1px;
+             margin-left: 1px;
+	         
+           
+            width: 80px;
+            height: 45px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: black;
+           
+        }
+		#b2{
+            position: absolute;
+			margin-top: 160px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
+	
+            width: 80px;
+            height: 45px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: black;
+           
+
+       
+            
+        }
+		#b3{
+             position: absolute;
+       		margin-top: 80px;
+    margin-bottom: 1px;
+    margin-right: 100px;
+    margin-left: 100px;
+	
+            width: 80px;
+            height: 45px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: black;
+        }
+		#b4{
+             position: absolute;
+       margin-top: 80px;
+    margin-bottom: 1px;
+    margin-right: 100px;
+    margin-left: -100px;
+	
+           width: 80px;
+            height: 45px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: black;
+  
+        }
+		body {
+background-color:#000000;
+
+background-image:url('/img/cool3.jpg');
+	
+background-repeat:no-repeat;
+
+background-position:center;
+
+background-size: cover;
+
+font: bold 18px/25px Arial, sans-serif;
+
+color:LightGray;
+
+}
+         #gpio18.LOW {
+            background-color: White;
+        }
+
+        #gpio18.HIGH {
+            background-color: Red;
+        }
+		
+		
+        
+
+    </style> 
+</head>
+<body>
+<br/>
+<div id="content"  align="center">
+		<img width="650" height="300" src="http://192.168.1.101:8081/?action=stream"><br/>
+	</div>
+	
+</body>
+</html>

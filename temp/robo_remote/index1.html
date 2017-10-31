@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content = "height = device-height, width = 420, user-scalable = no" /> 
+    <title>ROBO_LIVE</title>
+    <script type="text/javascript" src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\robo_remote\webiopi.js"></script>
+	 <script type="text/javascript" src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\scripts\bacon.js"></script>
+        <link rel="stylesheet" type="text/css" href="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\styles\bacon.css">
+        <link rel="shortcut icon" sizes="196x196" href="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\icon2.png" />
+    <script type="text/javascript">
+    webiopi().ready(function() {
+	webiopi().setFunction(18,"out");
+	webiopi().setFunction(23,"out");
+	webiopi().setFunction(24,"out");
+	webiopi().setFunction(25,"out");
+        var content, button,arrow-top,arrow-down,arrow-right,arrow-left;
+        content = $("#content");
+
+        // create a "SWITCH" labeled button for GPIO 0
+        button = webiopi().createGPIOButton(18, "SWITCH");
+        content.append(button); // append button to content div
+
+        // create a "LED" labeled button for GPIO 18
+        button = webiopi().createGPIOButton(18, "LED");
+        content.append(button); // append button to content div
+
+        
+        // you can also create a button which calls a different function for mouse down and up events
+        button = webiopi().createButton("hold", "UP", upon, upoff);
+        content.append(button);
+         button = webiopi().createButton("hold", "Down", downon, downoff);
+        content.append(button);
+		 button = webiopi().createButton("hold", "Right", righton, rightoff);
+        content.append(button);
+		 button = webiopi().createButton("hold", "Left", lefton, leftoff);
+        content.append(button);
+		arrow-top
+        
+    });
+
+    function upon() {
+        webiopi().digitalWrite(18, 1);
+    }
+
+    function upoff() {
+        webiopi().digitalWrite(18, 0);
+    }
+	function downon() {
+        webiopi().digitalWrite(23, 1);
+    }
+
+    function downoff() {
+        webiopi().digitalWrite(23, 0);
+    }
+	function righton() {
+        webiopi().digitalWrite(24, 1);
+    }
+
+    function rightoff() {
+        webiopi().digitalWrite(24, 0);
+    }
+	function lefton() {
+        webiopi().digitalWrite(25, 1);
+    }
+
+    function leftoff() {
+        webiopi().digitalWrite(25, 0);
+    }
+	function Stop() {
+	
+	}
+	function Forward() {
+	 webiopi().digitalWrite(18, 1);
+	 webiopi().digitalWrite(23, 0);
+	  webiopi().digitalWrite(24, 1);
+	   webiopi().digitalWrite(25, 0);
+	}
+	function Reverse() {
+	webiopi().digitalWrite(18, 0);
+	 webiopi().digitalWrite(23, 1);
+	  webiopi().digitalWrite(24, 0);
+	   webiopi().digitalWrite(25, 1);
+	
+	}
+	function TurnLeft() {
+	webiopi().digitalWrite(18, 0);
+	 webiopi().digitalWrite(23, 1);
+	  webiopi().digitalWrite(24, 0);
+	   webiopi().digitalWrite(25, 1);
+	
+	}
+	function TurnRight() {
+	webiopi().digitalWrite(18, 0);
+	 webiopi().digitalWrite(23, 1);
+	  webiopi().digitalWrite(24, 0);
+	   webiopi().digitalWrite(25, 1);
+	}
+	
+
+   
+
+ 
+
+    </script>
+    <style type="text/css">
+        button {
+            display: block;
+            margin: 5px 3px 5px 5px;
+            width: 80px;
+            height: 45px;
+            font-size: 10pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        input[type="range"] {
+            display: block;
+            width: 160px;
+            height: 45px;
+        }
+
+        #gpio18.LOW {
+            background-color: White;
+        }
+
+        #gpio18.HIGH {
+            background-color: Red;
+        }
+		
+html, body {
+	height:100%;
+	margin:0;
+}
+
+.main {
+	height:100%;
+	width:100%;
+}
+
+.container {
+	display:table;
+	height:100%;
+	margin:0 auto;
+	width: 360px;
+}
+
+.center {
+	display:table-cell;
+	height:480px;
+	width: 360px;
+	vertical-align:middle;
+}
+
+.arrow-top, .arrow-down {
+	clear:both;
+	text-align:center;
+	width:100%;
+}
+
+.middle-row {
+	float: left;
+	margin:20px 0;
+	width:360px;
+}
+
+.arrow-left {
+	float: left;
+	margin-right:20px;
+}
+
+.stop {
+	float: left;
+}
+
+.arrow-right {
+	float: left;
+	margin-left:20px;
+}
+
+a {
+ opacity:0.80;
+}
+
+a:hover {
+ opacity:1;
+}
+
+.credits {
+	margin-top:40px;
+	text-align:center;
+}
+
+.turnDeviceNotification {
+  position:fixed;
+  top: 0;
+  left:0;
+  height:100%;
+  width:100%;
+  display: none;	
+  background-image:url('picar/turn-device.png');
+  background-size:cover;
+}
+
+    </style>
+</head>
+<body>
+<br/>
+<br/>
+<div id="content"  align="center">
+		<img width="500" height="300" src="http://192.168.1.104:8081/?action=stream"><br/>
+	</div>
+
+    <div id="content" align="center"></div>
+	<div class="main">
+	<div class="container">
+    	<div class="center">
+            <div class="arrow-top" onmousedown="Forward()"><a href="#"><img src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\arrow-top.png" alt="Up"></a></div>
+            <div class="middle-row">
+                <div class="arrow-left" onmousedown="TurnLeft()"><a href="#"><img src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\arrow-left.png" alt="Up"></a></div>
+                <div class="stop" onmousedown="Stop()"><a href="#"><img src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\btn-stop.png" alt="Up"></a></div>
+                <div class="arrow-right" onmousedown="TurnRight()"><a href="#"><img src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\arrow-right.png" alt="Up"></a></div>
+            </div>
+            <div class="arrow-down" onmousedown="Reverse()"><a href="#"><img src="C:\Users\Rupesh\Desktop\temp\WebIOPi-0.7.1\htdocs\img\arrow-down.png" alt="Up"></a></div>
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

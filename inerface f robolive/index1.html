@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content = "height = device-height, width = 420, user-scalable = no" /> 
+    <title>ROBO_LIVE</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <link rel="shortcut icon" sizes="196x196" href="/img/icon2.png" />
+ 
+   <script type="text/javascript">
+    webiopi().ready(function() {
+	webiopi().setFunction(18,"out");
+	webiopi().setFunction(23,"out");
+	webiopi().setFunction(24,"out");
+	webiopi().setFunction(25,"out");
+        var content,b1,b2,b3,b4;
+        content = $("#content");
+		
+    
+	
+	b1 = webiopi().createButton("b1", "FORWARD", forward, off);
+	b2 = webiopi().createButton("b2", "REVERSE", reverse, off);
+	b3 = webiopi().createButton("b3", "RIGHT", right, off);
+	b4 = webiopi().createButton("b4", "LEFT", left, off);
+	content.append(b1);
+	 content.append(b2);
+        content.append(b3);
+        content.append(b4);
+		
+    });
+
+    function off() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 0);
+    }
+
+    function forward() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 1);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 1);
+		
+		}
+		function reverse() {
+        webiopi().digitalWrite(18, 1);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 1);
+		webiopi().digitalWrite(25, 0);
+		
+		}
+		function right() {
+        webiopi().digitalWrite(18, 0);
+		webiopi().digitalWrite(23, 1);
+		webiopi().digitalWrite(24, 1);
+		webiopi().digitalWrite(25, 0);
+		
+		}
+	
+	function left() {
+        webiopi().digitalWrite(18, 1);
+		webiopi().digitalWrite(23, 0);
+		webiopi().digitalWrite(24, 0);
+		webiopi().digitalWrite(25, 1);
+	
+		}
+    </script>
+	
+   <style type="text/css">
+	*{margin:0; padding:0;}
+ 
+		#b1{
+            width: 80px;
+            height: 45px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: black;
+			border-radius:50px;
+           
+        }
+		#b1:hover{background:white;}
+		#b2{
+			position:absolute;
+			margin-top:50px;
+			margin-left:-80px;
+			width: 80px;
+            height: 45px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: black;
+           border-radius:50px
+		   }
+       #b2:hover{background:white;}
+       
+            
+        
+		#b3{
+            position:absolute;
+			margin-top:25px;
+            width: 80px;
+            height: 45px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: black;
+			border-radius:50px;
+			}
+			#b3:hover{background:white;}
+        
+		#b4{
+            position:absolute;
+			margin-top:25px;
+			margin-left:-160px;            
+           width: 80px;
+            height: 45px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: black;
+			border-radius:50px;
+			}
+  #b4:hover{background:white;}
+    body{height:100%; width:100%;}    
+	img{width:40%; margin-top:3%; margin-bottom:2%;}
+	#container{height:100%; width:100%;}
+</style> 
+</head>
+
+<body>
+	<div id="container">
+	<div id="content"  align="center">
+      <section id="section">
+		<div id="div">
+				<img src="http://192.168.1.103:8081/?action=stream">
+		</div>
+      </section>		
+	</div>
+	<footer id="footer"></footer>	
+	</div>
+</body>
+
+</html>

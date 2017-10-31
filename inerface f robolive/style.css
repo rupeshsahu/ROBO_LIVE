@@ -1,0 +1,7 @@
+*{margin: 0px; padding:0px;}
+body{width: 84%;margin-left: 8%}
+header{height: 15%; width: 100%; background: BLACK;}
+img{height: 100%; width: 15%; position: relative;left: 82%;}
+section{height: 77%; width: 100%; background: #e0e0d9s;}
+div{height: 72%; width: 70%; background:pink; position: relative; top: 5%; margin-left: 15%;}
+footer{height: 8%; width: 100%; background: black;}
